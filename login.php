@@ -55,6 +55,10 @@
             </div>
             <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Login</button>
         </form>
+        <p class="text-center text-gray-600 mt-4">
+            Don't have an account? 
+            <a href="signUp.php" class="text-blue-600 hover:underline">Sign up</a>
+        </p>
     </div>
 
 </body>
