@@ -9,16 +9,7 @@
 <body class="flex h-screen bg-gray-100">
 
     <!-- Sidebar (Fixed) -->
-    <aside class="w-64 bg-gray-800 text-white h-screen p-5 fixed">
-        <h2 class="text-2xl font-bold mb-6">Admin Dashboard</h2>
-        <nav>
-            <ul class="space-y-3">
-                <li><a href="dashboard.html" class="block py-2 px-4 rounded bg-gray-700">Dashboard</a></li>
-                <li><a href="users.html" class="block py-2 px-4 rounded bg-gray-700">View Users</a></li>
-                <li><a href="drivers.html" class="block py-2 px-4 rounded bg-gray-700">View Drivers</a></li>
-            </ul>
-        </nav>
-    </aside>
+    <?php include '../components/sidebar.php'; ?>
 
     <!-- Main Content -->
     <main class="ml-64 flex-1 p-10">

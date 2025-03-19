@@ -53,10 +53,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     if (isset($_SESSION['role'])) {
         if ($_SESSION['role'] === 'user') {
-            header("Location: users/userHome.php");
+            header("Location: user/userHome.php");
             exit();
             } elseif ($_SESSION['role'] === 'driver') {
-                header("Location: drivers/driverHome.php");
+                header("Location: driver/driverHome.php");
                 exit();
             }
         }
