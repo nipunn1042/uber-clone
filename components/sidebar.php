@@ -1,5 +1,5 @@
 <?php
-// Check if a session is already active before starting one
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -19,8 +19,6 @@ if (!isset($_SESSION['admin'])) {
     <title>Admin Panel</title>
 </head>
 <body class="flex">
-
-    <!-- Sidebar -->
     <div class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white p-5 shadow-lg">
     <h2 class="text-xl font-bold mb-6">Admin Panel</h2>
     

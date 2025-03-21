@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../config/config.php'; // Database connection
+require '../config/config.php';
 
 // Check if admin is logged in
 if (!isset($_SESSION['admin'])) {
@@ -8,7 +8,6 @@ if (!isset($_SESSION['admin'])) {
     exit();
 }
 
-// Fetch all users
 $sql = "SELECT id, full_name, email, phone, created_at FROM users ORDER BY created_at DESC";
 $result = $conn->query($sql);
 ?>
@@ -23,11 +22,9 @@ $result = $conn->query($sql);
 </head>
 <body class="flex">
 
-    <!-- Include Sidebar -->
     <?php include '../components/sidebar.php'; ?>
 
-    <!-- Main Content Area -->
-    <div class="flex-1 p-8 ml-64"> <!-- Adjust left margin to match sidebar width -->
+    <div class="flex-1 p-8 ml-64">
         <h2 class="text-2xl font-bold mb-4">Registered Users</h2>
         
         <table class="w-full border-collapse border border-gray-300">
@@ -41,7 +38,6 @@ $result = $conn->query($sql);
             </thead>
             <tbody>
                 <?php
-                // include '../config.php'; // Database connection
 
                 $query = "SELECT id, full_name, email, phone FROM users";
                 $result = mysqli_query($conn, $query);
@@ -61,8 +57,6 @@ $result = $conn->query($sql);
 
 </body>
 </html>
-
-
 <?php
 $conn->close();
 ?>

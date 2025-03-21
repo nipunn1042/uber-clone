@@ -8,7 +8,6 @@
 </head>
 <body class="flex">
 
-    <!-- Sidebar -->
     <?php include '../components/sidebar.php'; ?>
 
     <div class="flex-1 p-8 ml-64"> 

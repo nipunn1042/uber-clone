@@ -1,5 +1,5 @@
 <?php
-include 'config/config.php'; // Database connection
+include 'config/config.php'; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $full_name = trim($_POST['name']);

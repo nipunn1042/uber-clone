@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// If admin is already logged in, redirect to the dashboard
 if (isset($_SESSION['admin'])) {
     header("Location: admin_dashboard.php");
     exit();
@@ -27,16 +25,14 @@ if (isset($_SESSION['admin'])) {
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 1; /* Keep background behind content */
+            z-index: 1;
         }
     </style>
 </head>
 <body class="flex items-center justify-center h-screen relative">
-    
-    <!-- Background Overlay -->
+
     <div class="overlay"></div>
 
-    <!-- Login Form -->
     <div class="bg-white p-8 rounded-lg shadow-lg z-10 relative w-96">
         <h2 class="text-2xl font-bold text-center mb-6">Admin Login</h2>
         <form action="admin_login_process.php" method="POST">

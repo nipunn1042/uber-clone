@@ -1,12 +1,12 @@
 <?php
 session_start();
-require '../config/config.php'; // Ensure this points to your database connection file
+require '../config/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Fetch admin record from database
+    // Fetch admin 
     $sql = "SELECT * FROM admin WHERE username = ? AND password = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $username, $password);
@@ -15,11 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows === 1) {
         $admin = $result->fetch_assoc();
-        
-        // Set session for admin
+
         $_SESSION['admin'] = $admin['username'];
-        
-        // Redirect to admin dashboard
+
         header("Location: dashboard.php");
         exit();
     } else {

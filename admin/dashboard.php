@@ -8,12 +8,9 @@
 </head>
 <body class="flex h-screen bg-gray-100">
 
-    <!-- Sidebar (Fixed) -->
     <?php include '../components/sidebar.php'; ?>
 
-    <!-- Main Content -->
     <main class="ml-64 flex-1 p-10">
-        <!-- This will change per page -->
         <div id="content">
             <h1 class="text-3xl font-bold">Welcome, Admin</h1>
             <p class="mt-2 text-gray-600">Use the sidebar to manage users and drivers.</p>
