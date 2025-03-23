@@ -7,6 +7,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
     exit();
 }
 
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+header("Expires: Sat, 01 Jan 2000 00:00:00 GMT");
+
 $user_id = $_SESSION['user_id'];
 $fullName = $_SESSION['full_name'];
 
@@ -44,7 +48,7 @@ $rides = $result->fetch_all(MYSQLI_ASSOC);
                         Ride</a></li>
                 <li><a href="rideHistory.php" class="block p-2 bg-green-500 text-white rounded hover:bg-green-600">📜
                         Ride History</a></li>
-                <li><a href="profile.php" class="block p-2 bg-gray-500 text-white rounded hover:bg-gray-600">⚙️ Edit
+                <li><a href="userProfile.php" class="block p-2 bg-gray-500 text-white rounded hover:bg-gray-600">⚙️ Edit
                         Profile</a></li>
             </ul>
         </aside>
@@ -67,9 +71,11 @@ $rides = $result->fetch_all(MYSQLI_ASSOC);
                             <?php foreach ($rides as $ride): ?>
                                 <tr class="text-center">
                                     <td class="border border-gray-300 p-3">
-                                        <?php echo htmlspecialchars($ride['pickup_location']); ?></td>
+                                        <?php echo htmlspecialchars($ride['pickup_location']); ?>
+                                    </td>
                                     <td class="border border-gray-300 p-3">
-                                        <?php echo htmlspecialchars($ride['dropoff_location']); ?></td>
+                                        <?php echo htmlspecialchars($ride['dropoff_location']); ?>
+                                    </td>
                                     <td class="border border-gray-300 p-3">₹ <?php echo htmlspecialchars($ride['fare']); ?></td>
                                     <td class="border border-gray-300 p-3">
                                         <span
@@ -79,7 +85,8 @@ $rides = $result->fetch_all(MYSQLI_ASSOC);
                                         </span>
                                     </td>
                                     <td class="border border-gray-300 p-3">
-                                        <?php echo date("d M Y, H:i", strtotime($ride['ride_date'])); ?></td>
+                                        <?php echo date("d M Y, H:i", strtotime($ride['ride_date'])); ?>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -96,6 +103,15 @@ $rides = $result->fetch_all(MYSQLI_ASSOC);
         </main>
 
     </div>
+
+    <script>
+        (function () {
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                history.go(1); // Redirect forward to login if user presses back
+            };
+        })();
+    </script>
 
 </body>
 

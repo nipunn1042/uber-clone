@@ -24,7 +24,7 @@
     </style>
 </head>
 
-<body class="flex items-center justify-center h-screen relative">
+<body class="flex items-center justify-center flex-col h-screen relative">
 
     <a href="admin/admin_login.php"
         class="absolute top-4 right-4 bg-blue-800 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition z-50">
@@ -64,6 +64,7 @@
             <a href="signUp.php" class="text-blue-600 hover:underline">Sign up</a>
         </p>
     </div>
+
 </body>
 
 </html>

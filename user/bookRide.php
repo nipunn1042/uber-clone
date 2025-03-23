@@ -3,7 +3,7 @@ session_start();
 require '../config/config.php';
 
 // Redirect if not logged in
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
+if (!isset($_SESSION['user_id'])) {
     header("Location: ../login.php");
     exit();
 }
@@ -31,14 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($stmt->execute()) {
         $ride_id = $stmt->insert_id;
 
-        // Fetch all available drivers
-        $driver_query = "SELECT user_id FROM users WHERE role = 'driver'";
+        // Fetch all active drivers from the drivers table
+        $driver_query = "SELECT id FROM drivers WHERE is_active = 1";
         $drivers = $conn->query($driver_query);
 
         while ($driver = $drivers->fetch_assoc()) {
-            $driver_id = $driver['user_id'];
+            $driver_id = $driver['id'];
 
-            // Insert ride request for each driver
+            // Insert ride request for each available driver
             $request_stmt = $conn->prepare("INSERT INTO ride_requests (ride_id, driver_id, status) VALUES (?, ?, 'Pending')");
             $request_stmt->bind_param("ii", $ride_id, $driver_id);
             $request_stmt->execute();
@@ -54,6 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->close();
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
